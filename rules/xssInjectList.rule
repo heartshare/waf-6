@@ -1,0 +1,3 @@
+<(iframe|script|body|img|layer|div|meta|style|base|object|input)
+(onerror|alert|onmouse[a-z]+|onkey[a-z]+|onload|onunload|odragdrop|onblur|onfocus|onclick|ondblclick|onsubmit|onreset|onselect|onchange)\=
+\?(.*)(;)(\$|vue|top|window|location|document|atob|btoa|history|navigator|screen|self|parent|open)(\(|\[|\.)

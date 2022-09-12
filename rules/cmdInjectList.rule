@@ -1,0 +1,22 @@
+xwork\.MethodAccessor
+(phpmyadmin|jmx-console|admin-console|jmxinvokerservlet)
+\.svn\/
+java\.lang
+base64_decode\(
+(?:define|eval|shell_exec|phpinfo|system|passthru|preg_\w+|execute|echo|print|print_r|var_dump|(fp)open|alert|showmodaldialog)\(
+(gopher|doc|php|glob|file|phar|zlib|ftp|ldap|dict|ogg|data)\:\/
+/\/proc\/(\d+|self)\/environ/iUs
+echo system
+exec\(
+\<\!\-\-\W*?#\W*?(?:e(?:cho|xec)|printenv|include|cmd)
+\$_(GET|post|cookie|files|session|env|phplib|GLOBALS|SERVER)\[
+(?:\w\.exe\??\s)
+(?:\d\.\dx\|)
+(?:%(?:c0\.|af\.|5c\.))
+(?:\/(?:%2e){2})
+\.(htaccess|bash_history)
+(?:etc\/\W*passwd)
+(?:file_get_contents|include|require|require_once)\(
+\.(bak|inc|old|mdb|sql|backup|java|class|tgz|gz|tar|zip)$
+(vhost|bbs|host|wwwroot|www|site|root|hytop|flashfxp)\.*\.rar
+(?:\b(?:\.(?:ht(?:access|passwd|group)|www_?acl)|global\.asa|httpd\.conf|boot\.ini)\b|\/etc\/)

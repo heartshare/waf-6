@@ -1,0 +1,87 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>验证页面</title>
+  <style type="text/css">
+    body {
+      margin-left: 35%;
+      margin-top: 10%;
+    }
+
+    img {
+      margin-left: 10%;
+      width: 70%;
+      height: 100%;
+    }
+
+    a {
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 12px;
+      color: #288bc4;
+    }
+
+    a:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  </style>
+  <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script language="javascript" type="text/javascript">
+    window.onload = function () {
+      $("#inputCode").focus();
+    }
+    function keySearch() {
+      if (event.keyCode == 13) {
+        $("#button").click();
+      }
+    }
+    function ForbidFreshPage() {
+      if ((window.event.ctrlKey && window.event.keyCode == 116) || window.event.keyCode == 116) {
+        window.event.keyCode = 0;
+        window.event.returnValue = false;
+      }
+    }
+    document.onkeydown = ForbidFreshPage;
+    function getCode() {
+      $("#checkimg").attr("src", "/output/#cookieUsrId#/" + parseInt(Math.random() * 1000000, 10) + ".img")
+    }
+    function validateCode() {
+      var inputCode = document.getElementById("inputCode").value;
+      if (inputCode.length != 6) {
+        alert("请输入6位验证码！");
+      }
+      else {
+        inputCode = inputCode.toUpperCase();
+        document.cookie = "_uid_=#cookieUsrId#;path=/";
+        document.cookie = "#cookieUsrId#=" + inputCode + ";path=/";
+        window.location.href = "#locationHref#";
+      }
+    }     
+  </script>
+
+</head>
+
+<body>
+  <div>
+    <table border="0" cellspacing="5" cellpadding="5">
+      <tr align="center" valign="middle">
+        <div style="font-weight:bold;">您的访问过于频繁，请输入验证码通过安全检查：</div>
+      </tr>
+      <tr align="center" valign="middle" color="red">
+        <div style="color:red">您还有#retryCount#次重试机会</div>
+      </tr>
+      <tr>
+        <td></td>
+        <td><img id="checkimg" onclick="getCode()" src="/output/#imgSrc#"></td>
+        <td><a onclick="getCode()">换一张</a><br /></td>
+      </tr>
+      <tr>
+        <td>验证码：</td>
+        <td><input style="float:left;" type="text" id="inputCode" onkeydown="keySearch();" /></td>
+        <td><input id="button" onclick="validateCode();" type="button" value="确定" /></td>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>
